@@ -1,5 +1,5 @@
-import 'package:cyberpunk_clicker/main_button.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'RubikGlitch',
         primarySwatch: const MaterialColor(
-          0xFF024059, <int, Color>{
+            0xFF024059, <int, Color>{
             50:Color(0xFF2BF0FB),
             100:Color(0xFF00F0FF),
             200:Color(0xFFFF003C),
@@ -44,8 +44,28 @@ class MyApp extends StatelessWidget {
 
 
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  String assetImage = 'images/positivo.png';
+
+  int money = 0;
+
+  void _incrementMoney(){
+    setState(() {
+      money++;
+    });
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +74,50 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            MainButton(assetImage: 'images/positivo.png'),
-            Text('teste')
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+              onPressed: _incrementMoney,
+              child: Image.asset(assetImage),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              color: const Color(0xFFF2CC0F),
+              alignment: Alignment.center,
+              child: Text(money.toString(), style: TextStyle(fontSize: 42)),
+            ),
+
+            Expanded(
+              flex: 1,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: TextButton(
+                      onPressed: _incrementMoney,
+                      style: TextButton.styleFrom(
+                        backgroundColor: const Color(0xFF2E86AB),
+                        foregroundColor: const Color(0xFF2BF0FB)
+                      ),
+                      child: const Text('Store', style: TextStyle( fontSize: 28)),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: TextButton(
+                      onPressed: _incrementMoney,
+                      style: TextButton.styleFrom(
+                          backgroundColor: const Color(0xFF2E86AB),
+                          foregroundColor: const Color(0xFF2BF0FB)
+                      ),
+                      child: const Text('Config', style: TextStyle( fontSize: 28)),
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       )

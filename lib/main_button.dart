@@ -11,20 +11,10 @@ class MainButton extends StatefulWidget {
 }
 
 class _MainButtonState extends State<MainButton> {
-  int money = 0;
 
-  void _incrementMoney(){
-    setState(() {
-      money++;
-    });
-
-  }
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-        onPressed: _incrementMoney,
-        child: Image.asset(widget.assetImage),
-    );
+    return
   }
 }
