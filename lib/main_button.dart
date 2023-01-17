@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
 
-class MainButton extends StatefulWidget {
-  const MainButton({super.key, required this.assetImage});
-
-  final String assetImage;
-
+class Botao extends StatefulWidget {
+  final String imagem;
+  final void Function()? incrementMoney;
+  final double screenHeight;
+  Botao({Key? key, required this.imagem, required this.incrementMoney, required this.screenHeight}) : super(key: key);
 
   @override
-  State<MainButton> createState() => _MainButtonState();
+  State<Botao> createState() => _BotaoState();
 }
 
-class _MainButtonState extends State<MainButton> {
-
-
+class _BotaoState extends State<Botao> {
   @override
   Widget build(BuildContext context) {
-    return
+    return SizedBox(
+    height: widget.screenHeight * 0.8,
+    width: double.infinity,
+child: Padding(
+padding: const EdgeInsets.all(8.0),
+child: ElevatedButton(
+onPressed: widget.incrementMoney,
+child: Image.asset(widget.imagem),
+),
+),
+);
   }
 }
