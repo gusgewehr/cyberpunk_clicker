@@ -1,6 +1,9 @@
 # cyberpunk_clicker
 
-Clicker counter game with cyberpunk thematic
+Endless clicker counter game with cyberpunk thematic
+
+# Dev Roadmap
+https://trello.com/b/g4m5of9G/cyberpunk-clicker
 
 ## Getting Started
 
